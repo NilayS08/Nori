@@ -27,26 +27,36 @@ Unlike traditional budgeting apps that focus on tracking past expenses, Nori foc
 
 ### Frontend
 
-- Next.js 15
+- Next.js 16
 - TypeScript
 - TailwindCSS
 - shadcn/ui
+- React Hook Form
+- TanStack Query
+- Axios
 - Framer Motion
-- React Query
+- Lucide Icons
 
 ### Backend
 
 - FastAPI
-- PostgreSQL
 - SQLAlchemy
 - Alembic
+- PostgreSQL
+- Docker
+- Pydantic Settings
 - JWT Authentication
 - APScheduler
 
 ### AI
 
-- Google Gemini
-- AI Provider Abstraction Layer
+- Gemini API
+- Provider Abstraction (planned)
+
+### Infrastructure
+
+- Docker Compose
+- PostgreSQL 17
 
 ---
 
@@ -92,9 +102,26 @@ nori/
 
 ## 🚀 Current Development Phase
 
-✅ Phase 1 — Project Foundation
+Phase 1 (Project Foundation) is nearly complete.
 
-### Upcoming
+Completed:
+
+- Backend initialization (uv, FastAPI, dependencies)
+- Frontend initialization (Next.js, TypeScript, TailwindCSS, shadcn/ui)
+- Docker configuration (PostgreSQL 17)
+- Environment variables (pydantic-settings)
+- SQLAlchemy (Base, Engine, SessionLocal, get_db())
+- Pre-commit hooks (Ruff)
+- Documentation
+
+Remaining:
+
+- Alembic initialization
+- Health endpoint
+- Backend ↔ Frontend communication
+- Initial Git commit
+
+### Upcoming Phases
 
 - Authentication
 - Onboarding

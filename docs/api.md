@@ -1,5 +1,7 @@
 # API Documentation
 
+> **Note:** No endpoints have been implemented yet. All future endpoints will use dependency injection with `get_db()` to receive a SQLAlchemy session.
+
 ## Base URL
 
 /api/v1

@@ -4,10 +4,19 @@
 
 Project Setup
 
-- Backend
-- Frontend
-- Database
-- Folder structure
+- [x] Backend initialization (uv, FastAPI, dependencies)
+- [x] Frontend initialization (Next.js, TypeScript, TailwindCSS, shadcn/ui)
+- [x] Docker configuration (PostgreSQL 17 container)
+- [x] PostgreSQL setup
+- [x] Environment variables (pydantic-settings, .env)
+- [x] SQLAlchemy (Base, Engine, SessionLocal, get_db())
+- [x] Folder structure
+- [x] Documentation
+- [x] Pre-commit configuration (Ruff, hooks)
+- [ ] Alembic initialization
+- [ ] Health endpoint
+- [ ] Backend ↔ Frontend communication
+- [ ] Initial Git commit
 
 ---
 

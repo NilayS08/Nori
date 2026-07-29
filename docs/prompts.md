@@ -67,3 +67,10 @@ Recommendation
 - Explain tradeoffs.
 - Friendly tone.
 - No financial jargon.
+
+---
+
+## Implementation Notes
+
+- AI prompts should access the provider through the AI Provider abstraction rather than directly instantiating Gemini clients.
+- This keeps provider switching possible without prompt changes.

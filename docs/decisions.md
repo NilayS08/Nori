@@ -93,3 +93,55 @@ Use Next.js.
 Reason
 
 SEO + React ecosystem.
+
+---
+
+## ADR-009
+
+Decision
+
+Use Dockerized PostgreSQL During Development.
+
+Reason
+
+- Consistent environment
+- Easy onboarding
+- Avoid local PostgreSQL installation
+- Matches production database engine
+
+Consequences
+
+Only the database host changes between development and production.
+
+---
+
+## ADR-010
+
+Decision
+
+Centralize Configuration Using Pydantic Settings.
+
+Reason
+
+Avoid scattered environment variable access.
+
+All configuration should be accessed through a single typed Settings object.
+
+Consequences
+
+Application configuration becomes type-safe and easier to maintain.
+
+---
+
+## ADR-011
+
+Decision
+
+Use SQLAlchemy ORM.
+
+Reason
+
+- Strong FastAPI ecosystem
+- Mature ORM
+- Excellent Alembic integration
+- Easier model management

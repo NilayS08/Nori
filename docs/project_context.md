@@ -115,19 +115,24 @@ Lightweight updates instead of detailed expense tracking.
 
 Frontend
 
-- Next.js 15
+- Next.js 16
 - TypeScript
-- Tailwind
+- TailwindCSS
 - shadcn/ui
 - Framer Motion
-- React Query
+- TanStack Query
+- Axios
+- React Hook Form
+- Lucide Icons
 
 Backend
 
 - FastAPI
-- PostgreSQL
 - SQLAlchemy
 - Alembic
+- PostgreSQL
+- Docker
+- Pydantic Settings
 - JWT
 - APScheduler
 
@@ -148,6 +153,15 @@ Local models
 without changing business logic.
 
 ---
+
+## Development Environment
+
+- PostgreSQL runs locally inside Docker during development (postgres:17).
+- SQLAlchemy 2.0 is the ORM (Base, Engine, SessionLocal, get_db()).
+- Alembic will manage schema migrations.
+- Configuration is centralized using Pydantic Settings (`app.core.config`).
+- Business logic remains inside the Financial Engine.
+- AI continues to be responsible only for reasoning and explanations.
 
 ## AI Philosophy
 

@@ -1,5 +1,16 @@
 # Features
 
+## Project Status
+
+The infrastructure foundation is nearly complete:
+
+- Backend initialized with FastAPI, SQLAlchemy, Docker Compose
+- Frontend initialized with Next.js, TypeScript, TailwindCSS, shadcn/ui
+- Configuration and database layer are ready
+- No features are implemented yet
+
+---
+
 ## MVP
 
 ### Authentication
