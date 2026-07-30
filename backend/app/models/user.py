@@ -9,6 +9,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.core.database import Base
 
 if TYPE_CHECKING:
+    from app.models.goal import Goal
     from app.models.refresh_token import RefreshToken
 
 
@@ -23,6 +24,7 @@ class User(Base):
     monthly_income: Mapped[float] = mapped_column(Numeric(12, 2), nullable=False, default=0.00)
     monthly_expenses: Mapped[float] = mapped_column(Numeric(12, 2), nullable=False, default=0.00)
     current_savings: Mapped[float] = mapped_column(Numeric(12, 2), nullable=False, default=0.00)
+    is_onboarded: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, default=lambda: datetime.now(UTC)
@@ -34,6 +36,9 @@ class User(Base):
         onupdate=lambda: datetime.now(UTC),
     )
 
+    goals: Mapped[list[Goal]] = relationship(
+        "Goal", back_populates="user", cascade="all, delete-orphan"
+    )
     refresh_tokens: Mapped[list[RefreshToken]] = relationship(
         "RefreshToken", back_populates="user", cascade="all, delete-orphan"
     )

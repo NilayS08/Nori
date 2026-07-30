@@ -26,6 +26,7 @@ class UserResponse(BaseModel):
     monthly_income: float
     monthly_expenses: float
     current_savings: float
+    is_onboarded: bool
     is_active: bool
     created_at: datetime
     updated_at: datetime

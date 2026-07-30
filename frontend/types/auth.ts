@@ -6,6 +6,7 @@ export interface User {
   monthly_income: number;
   monthly_expenses: number;
   current_savings: number;
+  is_onboarded: boolean;
   is_active: boolean;
   created_at: string;
   updated_at: string;

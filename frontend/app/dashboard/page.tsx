@@ -1,10 +1,20 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function DashboardPage() {
+  const router = useRouter();
   const { user, logout } = useAuth();
+
+  useEffect(() => {
+    if (user && !user.is_onboarded) {
+      router.push("/onboarding");
+    }
+  }, [user, router]);
 
   if (!user) {
     return (

@@ -5,6 +5,12 @@ from app.schemas.auth import (
     UserLogin,
     UserResponse,
 )
+from app.schemas.onboarding import (
+    GoalResponse,
+    OnboardingRequest,
+    OnboardingResponse,
+    OnboardingStatusResponse,
+)
 
 __all__ = [
     "UserCreate",
@@ -12,4 +18,8 @@ __all__ = [
     "UserResponse",
     "TokenResponse",
     "RefreshTokenRequest",
+    "OnboardingRequest",
+    "OnboardingResponse",
+    "OnboardingStatusResponse",
+    "GoalResponse",
 ]
