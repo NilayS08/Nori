@@ -152,7 +152,7 @@ Authentication is fully functional using JWT.
 
 # Phase 3 — User Onboarding
 
-Status: Not Started
+Status: Completed
 
 ## Objective
 
@@ -164,43 +164,43 @@ Collect the minimum information required to power the Financial Engine.
 
 ### Database
 
-- [ ] Extend User model
-- [ ] Create Goal model
-- [ ] Generate migration
+- [x] Extend User model
+- [x] Create Goal model
+- [x] Generate migration
 
 
 
 ### Backend
 
-- [ ] Onboarding service
-- [ ] Validation
-- [ ] CRUD endpoints
+- [x] Onboarding service
+- [x] Validation
+- [x] CRUD endpoints
 
 
 
 ### Frontend
 
-- [ ] Multi-step onboarding
-- [ ] Form validation
-- [ ] Progress indicator
+- [x] Multi-step onboarding
+- [x] Form validation
+- [x] Progress indicator
 
 
 
 ### Data Collection
 
-- [ ] User type
-- [ ] Monthly income
-- [ ] Monthly expenses
-- [ ] Current savings
-- [ ] Savings goal
+- [x] User type
+- [x] Monthly income
+- [x] Monthly expenses
+- [x] Current savings
+- [x] Savings goal
 
 
 
 ## Verification
 
-- [ ] User completes onboarding
-- [ ] Data stored correctly
-- [ ] User redirected to dashboard
+- [x] User completes onboarding
+- [x] Data stored correctly
+- [x] User redirected to dashboard
 
 
 
@@ -214,7 +214,7 @@ A new user can complete onboarding and reach the dashboard.
 
 # Phase 4 — Financial Engine
 
-Status: Not Started
+Status: Completed
 
 ## Objective
 
@@ -226,32 +226,32 @@ Implement all deterministic financial calculations.
 
 ### Core Engine
 
-- [ ] Disposable income calculation
-- [ ] Safe To Spend calculation
-- [ ] Savings allocation
-- [ ] Emergency fund calculation
-- [ ] Goal projection
+- [x] Disposable income calculation
+- [x] Safe To Spend calculation
+- [x] Savings allocation
+- [x] Emergency fund calculation
+- [x] Goal projection
 
 
 
 ### Scoring
 
-- [ ] Financial Confidence Score
-- [ ] Budget health score
+- [x] Financial Confidence Score
+- [x] Budget health score
 
 
 
 ### Services
 
-- [ ] FinancialEngine class
-- [ ] Unit tests
+- [x] FinancialEngine class
+- [x] Unit tests
 
 
 
 ## Verification
 
-- [ ] Calculations verified
-- [ ] Unit tests passing
+- [x] Calculations verified
+- [x] Unit tests passing
 
 
 

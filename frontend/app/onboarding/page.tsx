@@ -1,13 +1,14 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { Logo } from "@/components/Logo";
 import { StepGoal } from "@/components/onboarding/StepGoal";
 import { StepIndicator } from "@/components/onboarding/StepIndicator";
 import { StepPersonal } from "@/components/onboarding/StepPersonal";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/hooks/useAuth";
 import { createOnboarding } from "@/services/onboarding";
 
@@ -68,28 +69,37 @@ export default function OnboardingPage() {
   }
 
   return (
-    <main className="flex min-h-dvh items-center justify-center p-4">
-      <Card size="sm" className="w-full max-w-sm">
-        <CardHeader className="items-center text-center">
-          <CardTitle className="text-xl">Set up your finances</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-6">
-          <StepIndicator current={step} />
+    <main className="ambient relative flex min-h-dvh items-center justify-center overflow-hidden bg-background p-4">
+      <div className="relative z-10 flex w-full max-w-[480px] flex-col items-center gap-8">
+        <Logo />
+
+        <div className="glass w-full rounded-[24px] p-8 shadow-soft">
+          <div className="mb-6">
+            <StepIndicator current={step} />
+          </div>
 
           {error && (
-            <div className="rounded-lg bg-destructive/10 px-3 py-2 text-sm text-destructive">
+            <div className="mb-6 rounded-[12px] bg-rose-500/10 px-3 py-2 text-sm text-rose-400">
               {error}
             </div>
           )}
 
-          {step === 1 && <StepPersonal data={form} onChange={updateField} />}
-          {step === 2 && <StepGoal data={form} onChange={updateField} />}
+          <motion.div
+            key={step}
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -24 }}
+            transition={{ duration: 0.3 }}
+          >
+            {step === 1 && <StepPersonal data={form} onChange={updateField} />}
+            {step === 2 && <StepGoal data={form} onChange={updateField} />}
+          </motion.div>
 
-          <div className="flex gap-2">
+          <div className="mt-8 flex gap-3">
             {step > 1 && (
               <Button
                 type="button"
-                variant="outline"
+                variant="ghost"
                 onClick={() => setStep(step - 1)}
                 className="flex-1"
               >
@@ -111,12 +121,12 @@ export default function OnboardingPage() {
                 disabled={submitting}
                 className="flex-1"
               >
-                {submitting ? "Saving…" : "Complete setup"}
+                {submitting ? "Saving…" : "See my Safe To Spend"}
               </Button>
             )}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </main>
   );
 }

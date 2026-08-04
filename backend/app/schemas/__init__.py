@@ -5,6 +5,16 @@ from app.schemas.auth import (
     UserLogin,
     UserResponse,
 )
+from app.schemas.dashboard import (
+    BudgetHealthResponse,
+    ConfidenceScoreResponse,
+    DashboardResponse,
+    DashboardSummaryResponse,
+    EmergencyFundResponse,
+    GoalProjectionResponse,
+    SafeToSpendResponse,
+    SavingsAllocationResponse,
+)
 from app.schemas.onboarding import (
     GoalResponse,
     OnboardingRequest,
@@ -22,4 +32,12 @@ __all__ = [
     "OnboardingResponse",
     "OnboardingStatusResponse",
     "GoalResponse",
+    "DashboardResponse",
+    "DashboardSummaryResponse",
+    "SafeToSpendResponse",
+    "SavingsAllocationResponse",
+    "EmergencyFundResponse",
+    "GoalProjectionResponse",
+    "ConfidenceScoreResponse",
+    "BudgetHealthResponse",
 ]

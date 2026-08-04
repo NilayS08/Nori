@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
-import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -60,81 +59,75 @@ export function RegisterForm() {
 
   return (
     <>
-      <CardHeader className="items-center text-center">
-        <CardTitle className="text-xl">Create an account</CardTitle>
-        <CardDescription>Enter your details to get started</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-          {error && (
-            <div className="rounded-lg bg-destructive/10 px-3 py-2 text-sm text-destructive">
-              {error}
-            </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        {error && (
+          <div className="rounded-[12px] bg-rose-500/10 px-3 py-2 text-sm text-rose-400">
+            {error}
+          </div>
+        )}
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="name" className="text-sm font-medium">
+            Name
+          </label>
+          <Input id="name" placeholder="John Doe" {...register("name")} />
+          {errors.name && (
+            <span className="text-xs text-rose-400">{errors.name.message}</span>
           )}
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="name" className="text-sm font-medium">
-              Name
-            </label>
-            <Input id="name" placeholder="John Doe" {...register("name")} />
-            {errors.name && (
-              <span className="text-xs text-destructive">{errors.name.message}</span>
-            )}
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="email" className="text-sm font-medium">
-              Email
-            </label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="name@example.com"
-              {...register("email")}
-            />
-            {errors.email && (
-              <span className="text-xs text-destructive">{errors.email.message}</span>
-            )}
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="password" className="text-sm font-medium">
-              Password
-            </label>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              {...register("password")}
-            />
-            {errors.password && (
-              <span className="text-xs text-destructive">{errors.password.message}</span>
-            )}
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="confirmPassword" className="text-sm font-medium">
-              Confirm password
-            </label>
-            <Input
-              id="confirmPassword"
-              type="password"
-              placeholder="••••••••"
-              {...register("confirmPassword")}
-            />
-            {errors.confirmPassword && (
-              <span className="text-xs text-destructive">
-                {errors.confirmPassword.message}
-              </span>
-            )}
-          </div>
-          <Button type="submit" disabled={isSubmitting} className="mt-1 w-full">
-            {isSubmitting ? "Creating account…" : "Create account"}
-          </Button>
-        </form>
-        <p className="mt-4 text-center text-sm text-muted-foreground">
-          Already have an account?{" "}
-          <Link href="/login" className="font-medium text-foreground hover:underline">
-            Sign in
-          </Link>
-        </p>
-      </CardContent>
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="email" className="text-sm font-medium">
+            Email
+          </label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="name@example.com"
+            {...register("email")}
+          />
+          {errors.email && (
+            <span className="text-xs text-rose-400">{errors.email.message}</span>
+          )}
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="password" className="text-sm font-medium">
+            Password
+          </label>
+          <Input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            {...register("password")}
+          />
+          {errors.password && (
+            <span className="text-xs text-rose-400">{errors.password.message}</span>
+          )}
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="confirmPassword" className="text-sm font-medium">
+            Confirm password
+          </label>
+          <Input
+            id="confirmPassword"
+            type="password"
+            placeholder="••••••••"
+            {...register("confirmPassword")}
+          />
+          {errors.confirmPassword && (
+            <span className="text-xs text-rose-400">
+              {errors.confirmPassword.message}
+            </span>
+          )}
+        </div>
+        <Button type="submit" disabled={isSubmitting} className="mt-2 w-full text-sm">
+          {isSubmitting ? "Creating account…" : "Create account"}
+        </Button>
+      </form>
+      <p className="mt-4 text-center text-sm text-muted-foreground">
+        Already have an account?{" "}
+        <Link href="/login" className="font-medium text-primary hover:underline">
+          Sign in
+        </Link>
+      </p>
     </>
   );
 }

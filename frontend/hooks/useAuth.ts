@@ -25,12 +25,13 @@ function setStoredToken(token: string | null) {
 export function useAuth() {
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(() =>
+    typeof window === "undefined" ? true : !!getStoredToken(),
+  );
 
   useEffect(() => {
     const token = getStoredToken();
     if (!token) {
-      setLoading(false);
       return;
     }
     authService

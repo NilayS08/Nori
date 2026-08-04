@@ -1,12 +1,10 @@
-import { Card } from "@/components/ui/card";
+import { AuthShell } from "@/components/AuthShell";
 import { LoginForm } from "@/components/auth/LoginForm";
 
 export default function LoginPage() {
   return (
-    <main className="flex min-h-dvh items-center justify-center p-4">
-      <Card size="sm" className="w-full max-w-sm">
-        <LoginForm />
-      </Card>
-    </main>
+    <AuthShell title="Welcome back" subtitle="Enter your credentials to continue">
+      <LoginForm />
+    </AuthShell>
   );
 }

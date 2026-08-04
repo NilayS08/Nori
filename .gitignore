@@ -43,3 +43,7 @@ Thumbs.db
 
 # Project specific
 backend/.python-version
+
+#random
+current_error.txt
+current_phase.md

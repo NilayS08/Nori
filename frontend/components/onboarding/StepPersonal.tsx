@@ -1,3 +1,4 @@
+import { FormField } from "@/components/FormField";
 import { Input } from "@/components/ui/input";
 
 interface StepPersonalProps {
@@ -20,15 +21,12 @@ const userTypes = [
 export function StepPersonal({ data, onChange }: StepPersonalProps) {
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="user_type" className="text-sm font-medium">
-          User type
-        </label>
+      <FormField label="I am a" htmlFor="user_type">
         <select
           id="user_type"
           value={data.user_type}
           onChange={(e) => onChange("user_type", e.target.value)}
-          className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 py-1 text-sm transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+          className="h-9 w-full rounded-[14px] border border-input bg-white/[0.03] px-3 text-sm transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           {userTypes.map((t) => (
             <option key={t.value} value={t.value}>
@@ -36,11 +34,13 @@ export function StepPersonal({ data, onChange }: StepPersonalProps) {
             </option>
           ))}
         </select>
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="monthly_income" className="text-sm font-medium">
-          Monthly income
-        </label>
+      </FormField>
+
+      <FormField
+        label="Monthly income"
+        htmlFor="monthly_income"
+        hint="After taxes, if it varies use an average"
+      >
         <Input
           id="monthly_income"
           type="number"
@@ -50,11 +50,13 @@ export function StepPersonal({ data, onChange }: StepPersonalProps) {
           value={data.monthly_income}
           onChange={(e) => onChange("monthly_income", e.target.value)}
         />
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="monthly_expenses" className="text-sm font-medium">
-          Monthly expenses
-        </label>
+      </FormField>
+
+      <FormField
+        label="Monthly expenses"
+        htmlFor="monthly_expenses"
+        hint="Rent, bills, groceries — everything you spend"
+      >
         <Input
           id="monthly_expenses"
           type="number"
@@ -64,11 +66,9 @@ export function StepPersonal({ data, onChange }: StepPersonalProps) {
           value={data.monthly_expenses}
           onChange={(e) => onChange("monthly_expenses", e.target.value)}
         />
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="current_savings" className="text-sm font-medium">
-          Current savings
-        </label>
+      </FormField>
+
+      <FormField label="Current savings" htmlFor="current_savings">
         <Input
           id="current_savings"
           type="number"
@@ -78,7 +78,7 @@ export function StepPersonal({ data, onChange }: StepPersonalProps) {
           value={data.current_savings}
           onChange={(e) => onChange("current_savings", e.target.value)}
         />
-      </div>
+      </FormField>
     </div>
   );
 }

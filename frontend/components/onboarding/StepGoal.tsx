@@ -1,3 +1,4 @@
+import { FormField } from "@/components/FormField";
 import { Input } from "@/components/ui/input";
 
 interface StepGoalProps {
@@ -12,21 +13,20 @@ interface StepGoalProps {
 export function StepGoal({ data, onChange }: StepGoalProps) {
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="goal_title" className="text-sm font-medium">
-          Goal name
-        </label>
+      <FormField
+        label="Goal name"
+        htmlFor="goal_title"
+        hint="What are you saving for?"
+      >
         <Input
           id="goal_title"
           placeholder="Emergency Fund"
           value={data.goal_title}
           onChange={(e) => onChange("goal_title", e.target.value)}
         />
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="goal_target_amount" className="text-sm font-medium">
-          Target amount
-        </label>
+      </FormField>
+
+      <FormField label="Target amount" htmlFor="goal_target_amount">
         <Input
           id="goal_target_amount"
           type="number"
@@ -36,18 +36,17 @@ export function StepGoal({ data, onChange }: StepGoalProps) {
           value={data.goal_target_amount}
           onChange={(e) => onChange("goal_target_amount", e.target.value)}
         />
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="goal_deadline" className="text-sm font-medium">
-          Target deadline
-        </label>
+      </FormField>
+
+      <FormField label="Target deadline" htmlFor="goal_deadline">
         <Input
           id="goal_deadline"
           type="date"
           value={data.goal_deadline}
           onChange={(e) => onChange("goal_deadline", e.target.value)}
+          className="[color-scheme:dark]"
         />
-      </div>
+      </FormField>
     </div>
   );
 }
