@@ -9,6 +9,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.core.database import Base
 
 if TYPE_CHECKING:
+    from app.models.checkin import CheckIn
     from app.models.goal import Goal
     from app.models.refresh_token import RefreshToken
 
@@ -38,6 +39,9 @@ class User(Base):
 
     goals: Mapped[list[Goal]] = relationship(
         "Goal", back_populates="user", cascade="all, delete-orphan"
+    )
+    checkins: Mapped[list[CheckIn]] = relationship(
+        "CheckIn", back_populates="user", cascade="all, delete-orphan"
     )
     refresh_tokens: Mapped[list[RefreshToken]] = relationship(
         "RefreshToken", back_populates="user", cascade="all, delete-orphan"

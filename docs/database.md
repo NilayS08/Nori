@@ -87,8 +87,8 @@ Stores:
 - Target Amount
 - Current Amount
 - Deadline
-
----
+- Created At
+- Updated At
 
 ## Weekly Checkins
 
@@ -97,6 +97,8 @@ Stores:
 - Amount Spent
 - Notes
 - Created At
+
+Check-ins belong to a user (cascade delete).
 
 ---
 

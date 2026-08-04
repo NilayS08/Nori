@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from datetime import date
+
 from app.engine.schemas import (
     DisposableIncomeResult,
     EmergencyFundResult,
@@ -9,6 +11,13 @@ from app.engine.schemas import (
     SafeToSpendResult,
     SavingsAllocationResult,
 )
+
+
+def months_until(target: date, start: date | None = None) -> int:
+    """Number of whole calendar months between ``start`` (default: today) and ``target``."""
+    anchor = start or date.today()
+    months = (target.year - anchor.year) * 12 + (target.month - anchor.month)
+    return max(months, 1)
 
 
 def calculate_disposable_income(fin: FinancialInput) -> DisposableIncomeResult:

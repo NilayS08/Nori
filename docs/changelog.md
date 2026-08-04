@@ -53,6 +53,17 @@ Dashboard
 
 ## v0.6.0
 
+Goals & Weekly Check-ins
+
+- Goal CRUD
+- Goal progress calculation
+- Goal detail page
+- Weekly check-in model, API, and reminder UI
+
+---
+
+## v0.7.0
+
 AI
 
 - Gemini

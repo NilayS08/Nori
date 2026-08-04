@@ -1,5 +1,4 @@
 from dataclasses import asdict
-from datetime import date
 from typing import Annotated
 
 from fastapi import APIRouter, Depends
@@ -7,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
 from app.core.database import get_db
+from app.engine.calculations import months_until
 from app.engine.financial_engine import FinancialEngine
 from app.models.goal import Goal
 from app.models.user import User
@@ -15,19 +15,13 @@ from app.schemas.dashboard import DashboardResponse, DashboardSummaryResponse
 router = APIRouter(prefix="/dashboard", tags=["Dashboard"])
 
 
-def _months_until(target: date) -> int:
-    today = date.today()
-    months = (target.year - today.year) * 12 + (target.month - today.month)
-    return max(months, 1)
-
-
 def _build_engine(user: User, goals: list[Goal]) -> FinancialEngine:
     goal_dicts = [
         {
             "title": g.title,
             "target_amount": float(g.target_amount),
             "current_amount": float(g.current_amount),
-            "months_until_deadline": _months_until(g.deadline),
+            "months_until_deadline": months_until(g.deadline),
         }
         for g in goals
     ]

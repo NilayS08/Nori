@@ -265,7 +265,7 @@ All financial calculations are deterministic and tested.
 
 # Phase 5 — Dashboard
 
-Status: Not Started
+Status: Completed
 
 ## Objective
 
@@ -277,27 +277,27 @@ Display all financial information.
 
 ### Backend
 
-- [ ] Dashboard endpoint
-- [ ] Summary endpoint
+- [x] Dashboard endpoint
+- [x] Summary endpoint
 
 
 
 ### Frontend
 
-- [ ] Dashboard layout
-- [ ] Hero card
-- [ ] Safe To Spend card
-- [ ] Goal cards
-- [ ] Confidence Score
-- [ ] Timeline
-- [ ] Charts
+- [x] Dashboard layout
+- [x] Hero card
+- [x] Safe To Spend card
+- [x] Goal cards
+- [x] Confidence Score
+- [x] Timeline
+- [x] Charts
 
 
 
 ## Verification
 
-- [ ] Dashboard loads
-- [ ] Correct data displayed
+- [x] Dashboard loads
+- [x] Correct data displayed
 
 
 
@@ -307,11 +307,9 @@ Dashboard is the primary landing page.
 
 ---
 
-
-
 # Phase 6 — Goals
 
-Status: Not Started
+Status: Completed
 
 ## Objective
 
@@ -323,32 +321,40 @@ Allow users to manage financial goals.
 
 ### Backend
 
-- [ ] Goal CRUD
-- [ ] Goal progress calculation
+- [x] Goal CRUD — list, create, read, update, delete endpoints scoped to the authenticated user
+- [x] Goal progress calculation — deterministic `calculate_goal_progress` (progress %, remaining, months left, monthly contribution, months to complete, on track) reusing the Financial Engine
+- [x] Check-in model — `CheckIn` ORM model (amount spent, notes, created_at)
+- [x] Check-in API — create, list, and latest check-in endpoints
+- [x] Alembic migration — `goals.updated_at` + `checkins` table
 
 
 
 ### Frontend
 
-- [ ] Goal creation
-- [ ] Goal editing
-- [ ] Goal deletion
-- [ ] Goal detail page
+- [x] Goal creation — dialog form with validation
+- [x] Goal editing — same dialog pre-filled for an existing goal
+- [x] Goal deletion — confirmation dialog
+- [x] Goal detail page — `/goals/[id]` with progress, deadline, and goal-pace breakdown
+- [x] Goals list page — `/goals` with cards, empty state, and new-goal action
+- [x] Weekly reminder UI — dashboard check-in card + dialog, "checked in this week" state
 
 
 
 ### Weekly Check-ins
 
-- [ ] Check-in model
-- [ ] Check-in API
-- [ ] Weekly reminder UI
+- [x] Check-in model
+- [x] Check-in API
+- [x] Weekly reminder UI
 
 
 
 ## Verification
 
-- [ ] Goals persist
-- [ ] Progress updates correctly
+- [x] Goals persist — create/update/delete verified end-to-end against PostgreSQL
+- [x] Progress updates correctly — `current_amount` changes reflected in progress %
+- [x] Backend tests passing (40)
+- [x] Ruff passes
+- [x] Frontend lint + build pass
 
 
 

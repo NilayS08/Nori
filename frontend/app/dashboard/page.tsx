@@ -13,6 +13,7 @@ import { GoalCard } from "@/components/dashboard/GoalCard";
 import { HeroCard } from "@/components/dashboard/HeroCard";
 import { Navbar } from "@/components/dashboard/Navbar";
 import { SafeToSpendCard } from "@/components/dashboard/SafeToSpendCard";
+import { CheckInReminder } from "@/components/checkins/CheckInReminder";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { getDashboard } from "@/services/dashboard";
@@ -80,6 +81,7 @@ export default function DashboardPage() {
                 monthlyExpenses={data.monthly_expenses}
                 delay={0.2}
               />
+              <CheckInReminder />
             </div>
 
             <GoalsSection goals={data.goal_projections} />

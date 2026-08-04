@@ -5,6 +5,7 @@ from app.schemas.auth import (
     UserLogin,
     UserResponse,
 )
+from app.schemas.checkins import CheckInCreate, CheckInResponse
 from app.schemas.dashboard import (
     BudgetHealthResponse,
     ConfidenceScoreResponse,
@@ -15,8 +16,11 @@ from app.schemas.dashboard import (
     SafeToSpendResponse,
     SavingsAllocationResponse,
 )
+from app.schemas.goals import GoalCreate, GoalResponse, GoalUpdate
 from app.schemas.onboarding import (
-    GoalResponse,
+    GoalResponse as OnboardingGoalResponse,
+)
+from app.schemas.onboarding import (
     OnboardingRequest,
     OnboardingResponse,
     OnboardingStatusResponse,
@@ -31,7 +35,12 @@ __all__ = [
     "OnboardingRequest",
     "OnboardingResponse",
     "OnboardingStatusResponse",
+    "OnboardingGoalResponse",
+    "GoalCreate",
+    "GoalUpdate",
     "GoalResponse",
+    "CheckInCreate",
+    "CheckInResponse",
     "DashboardResponse",
     "DashboardSummaryResponse",
     "SafeToSpendResponse",

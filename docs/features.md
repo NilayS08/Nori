@@ -2,12 +2,16 @@
 
 ## Project Status
 
-The infrastructure foundation is nearly complete:
+Implemented:
 
 - Backend initialized with FastAPI, SQLAlchemy, Docker Compose
 - Frontend initialized with Next.js, TypeScript, TailwindCSS, shadcn/ui
-- Configuration and database layer are ready
-- No features are implemented yet
+- JWT authentication (register, login, refresh, me)
+- Onboarding flow
+- Financial Engine (deterministic calculations)
+- Dashboard (Safe To Spend, Confidence Score, Goal progress)
+- Goal management (CRUD + progress)
+- Weekly check-ins
 
 ---
 
@@ -33,6 +37,8 @@ The infrastructure foundation is nearly complete:
 - Create Goal
 - Update Goal
 - Delete Goal
+- Goal Detail Page
+- Progress Calculation
 
 ---
 
@@ -40,6 +46,7 @@ The infrastructure foundation is nearly complete:
 
 - Weekly spending
 - Notes
+- Reminder UI
 
 ---
 
