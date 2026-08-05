@@ -53,7 +53,7 @@ export default function GoalDetailPage() {
     <div className="ambient min-h-dvh bg-background">
       <Navbar name={user.name} onLogout={logout} />
 
-      <main className="mx-auto max-w-3xl space-y-6 px-4 py-8">
+      <main className="mx-auto max-w-3xl space-y-6 px-4 pt-28 pb-8">
         <Link
           href="/goals"
           className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"

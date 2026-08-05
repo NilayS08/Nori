@@ -17,6 +17,16 @@ export function formatMoneyExact(value: number): string {
   return f.format(value);
 }
 
+export interface MoneyParts {
+  whole: string;
+  frac: string;
+}
+
+export function formatMoneyParts(value: number): MoneyParts {
+  const [whole, frac] = value.toFixed(2).split(".");
+  return { whole: Number(whole).toLocaleString("en-IN"), frac };
+}
+
 export function formatPercent(value: number): string {
   return `${value.toFixed(0)}%`;
 }

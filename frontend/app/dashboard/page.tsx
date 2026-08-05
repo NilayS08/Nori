@@ -1,26 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
+import { AIAssistantPanel } from "@/components/dashboard/AIAssistantPanel";
 import { BudgetHealthCard } from "@/components/dashboard/BudgetHealthCard";
-import { ConfidenceScoreCard } from "@/components/dashboard/ConfidenceScoreCard";
-import { EmergencyFundCard } from "@/components/dashboard/EmergencyFundCard";
-import { GoalCard } from "@/components/dashboard/GoalCard";
-import { HeroCard } from "@/components/dashboard/HeroCard";
+import { ConfidenceCard } from "@/components/dashboard/ConfidenceCard";
 import { Navbar } from "@/components/dashboard/Navbar";
-import { SafeToSpendCard } from "@/components/dashboard/SafeToSpendCard";
-import { CheckInReminder } from "@/components/checkins/CheckInReminder";
-import { PurchaseAdviceCard } from "@/components/ai/PurchaseAdviceCard";
-import { WeeklyInsightCard } from "@/components/ai/WeeklyInsightCard";
-import { WhatIfCard } from "@/components/ai/WhatIfCard";
+import { Orbs } from "@/components/dashboard/Orbs";
+import { QuickStats } from "@/components/dashboard/QuickStats";
+import { SafeToSpendHero } from "@/components/dashboard/SafeToSpendHero";
+import { SavingsGoalsCard } from "@/components/dashboard/SavingsGoalsCard";
+import { WeeklyCheckIn } from "@/components/dashboard/WeeklyCheckIn";
+import { WeeklySpendChart } from "@/components/dashboard/WeeklySpendChart";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { getWeeklySummary } from "@/services/ai";
+import { getCheckIns } from "@/services/checkins";
 import { getDashboard } from "@/services/dashboard";
-import type { GoalProjection } from "@/types/dashboard";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -32,10 +30,26 @@ export default function DashboardPage() {
     }
   }, [user, authLoading, router]);
 
+  const enabled = !!user && user.is_onboarded;
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["dashboard"],
     queryFn: getDashboard,
-    enabled: !!user && user.is_onboarded,
+    enabled,
+  });
+
+  const { data: checkins } = useQuery({
+    queryKey: ["checkins"],
+    queryFn: getCheckIns,
+    enabled,
+  });
+
+  const { data: weeklyStats } = useQuery({
+    queryKey: ["ai", "weekly-summary"],
+    queryFn: getWeeklySummary,
+    enabled,
+    staleTime: 60_000,
+    refetchOnWindowFocus: false,
   });
 
   if (authLoading || !user) {
@@ -55,42 +69,47 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="ambient min-h-dvh bg-background">
+    <div className="relative min-h-dvh bg-background">
+      <Orbs />
       <Navbar name={user.name} onLogout={logout} />
 
-      <main className="mx-auto max-w-5xl space-y-8 px-4 py-8">
+      <main
+        className="relative z-1 mx-auto max-w-[1480px] px-8 pb-20 max-sm:px-4"
+      >
         {isLoading && <LoadingState />}
         {error && <ErrorState />}
         {!isLoading && !error && data && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="space-y-8"
-          >
-            <HeroCard
-              safeToSpend={data.safe_to_spend}
-              confidence={data.confidence}
-              userName={user.name}
-            />
+          <>
+            <SafeToSpendHero safeToSpend={data.safe_to_spend} />
 
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              <SafeToSpendCard safeToSpend={data.safe_to_spend} delay={0.05} />
-              <EmergencyFundCard emergencyFund={data.emergency_fund} delay={0.1} />
-              <ConfidenceScoreCard confidence={data.confidence} delay={0.15} />
-              <BudgetHealthCard
-                budgetHealth={data.budget_health}
-                monthlyIncome={data.monthly_income}
-                monthlyExpenses={data.monthly_expenses}
-                delay={0.2}
-              />
-              <CheckInReminder />
+            <div className="mb-5">
+              <QuickStats dashboard={data} weeklyStats={weeklyStats?.stats ?? null} />
             </div>
 
-            <GoalsSection goals={data.goal_projections} />
+            <div className="grid grid-cols-1 items-start gap-5 xl:grid-cols-[1fr_340px]">
+              <div className="flex flex-col gap-5">
+                <WeeklySpendChart checkins={checkins ?? []} weeklyStats={weeklyStats?.stats ?? null} />
 
-            <InsightsSection />
-          </motion.div>
+                <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+                  <SavingsGoalsCard goals={data.goal_projections} />
+                  <BudgetHealthCard
+                    budgetHealth={data.budget_health}
+                    monthlyIncome={data.monthly_income}
+                    monthlyExpenses={data.monthly_expenses}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+                  <ConfidenceCard confidence={data.confidence} />
+                  <WeeklyCheckIn />
+                </div>
+              </div>
+
+              <div className="xl:sticky xl:top-20">
+                <AIAssistantPanel dashboard={data} />
+              </div>
+            </div>
+          </>
         )}
       </main>
     </div>
@@ -100,11 +119,21 @@ export default function DashboardPage() {
 function LoadingState() {
   return (
     <div className="space-y-8">
-      <div className="glass h-56 animate-pulse rounded-[24px]" />
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <div className="glass h-44 animate-pulse rounded-[20px]" />
-        <div className="glass h-44 animate-pulse rounded-[20px]" />
-        <div className="glass h-44 animate-pulse rounded-[20px]" />
+      <div className="glass h-64 animate-pulse" />
+      <div className="grid grid-cols-3 gap-3 max-sm:grid-cols-1">
+        <div className="glass-sm h-24 animate-pulse" />
+        <div className="glass-sm h-24 animate-pulse" />
+        <div className="glass-sm h-24 animate-pulse" />
+      </div>
+      <div className="grid grid-cols-1 items-start gap-5 xl:grid-cols-[1fr_340px]">
+        <div className="space-y-5">
+          <div className="glass h-48 animate-pulse" />
+          <div className="grid grid-cols-2 gap-5 max-sm:grid-cols-1">
+            <div className="glass h-72 animate-pulse" />
+            <div className="glass h-72 animate-pulse" />
+          </div>
+        </div>
+        <div className="glass min-h-[600px] animate-pulse" />
       </div>
     </div>
   );
@@ -118,49 +147,5 @@ function ErrorState() {
         Retry
       </Button>
     </div>
-  );
-}
-
-function GoalsSection({
-  goals,
-}: {
-  goals: GoalProjection[];
-}) {
-  if (goals.length === 0) {
-    return (
-      <div className="glass flex flex-col items-center gap-3 rounded-[24px] p-10 text-center shadow-soft">
-        <p className="text-lg font-medium">No goals yet</p>
-        <p className="max-w-sm text-sm text-muted-foreground">
-          Create your first goal to see your progress and stay motivated.
-        </p>
-        <Link href="/goals" className="mt-2">
-          <Button size="sm">Create your first goal</Button>
-        </Link>
-      </div>
-    );
-  }
-
-  return (
-    <section className="space-y-5">
-      <h2 className="text-[28px] font-semibold tracking-tight">Goals</h2>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {goals.map((goal, i) => (
-          <GoalCard key={goal.title} goal={goal} delay={0.1 + i * 0.05} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function InsightsSection() {
-  return (
-    <section className="space-y-5">
-      <h2 className="text-[28px] font-semibold tracking-tight">Insights</h2>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <WeeklyInsightCard delay={0.1} />
-        <PurchaseAdviceCard delay={0.15} />
-        <WhatIfCard delay={0.2} />
-      </div>
-    </section>
   );
 }

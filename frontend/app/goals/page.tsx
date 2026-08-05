@@ -60,7 +60,7 @@ export default function GoalsPage() {
     <div className="ambient min-h-dvh bg-background">
       <Navbar name={user.name} onLogout={logout} />
 
-      <main className="mx-auto max-w-5xl space-y-8 px-4 py-8">
+      <main className="mx-auto max-w-5xl space-y-8 px-4 pt-28 pb-8">
         <div className="flex items-end justify-between">
           <div>
             <h1 className="text-[32px] font-semibold tracking-tight">Goals</h1>

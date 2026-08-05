@@ -73,6 +73,27 @@ AI
 - Goal explanations — plain-language read on goal progress
 - Safety — graceful provider failure, per-user rate limiting, prompt validation
 
+## v0.8.0
+
+Dashboard Redesign
+
+- New design system — `#060608` palette, Inter/DM Sans/JetBrains Mono, glass utilities (`.glass`, `.glass-nav`), gradient text, animated orbs
+- Floating glass pill navbar (shared across dashboard + goals pages)
+- Safe-to-spend hero with live balance badge, gradient INR display, and reset countdown
+- Quick stats, weekly spending chart (real check-in history), savings goals, budget health, financial confidence, and weekly check-in cards wired to real data
+- "Ask Nori" assistant panel wired to the existing AI features (purchase advice, what-if, weekly summary, goal review) with real suggestion chips and quick actions
+
+---
+
+## v0.8.1
+
+UX Follow-ups
+
+- New Insights page (`/insights`) — full-page "Ask Nori" chat reusing the dashboard assistant, with weekly insight + quick actions sidebar
+- Navbar rework — Insights tab (lightbulb), removed search icon, sign-out moved into avatar profile dropdown
+- Pages now open scrolled to top (client `ScrollToTop` + manual scroll restoration)
+- Shared chat logic extracted into a reusable `useNoriChat` hook with presentational chat components
+
 ---
 
 Future releases should continue in semantic versioning (`MAJOR.MINOR.PATCH`).

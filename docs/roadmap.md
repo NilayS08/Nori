@@ -421,7 +421,7 @@ AI explains financial decisions without replacing deterministic calculations.
 
 # Phase 8 — UI Polish
 
-Status: Not Started
+Status: In Progress
 
 ## Objective
 
@@ -433,9 +433,9 @@ Transform MVP into a polished product.
 
 ### Design
 
-- [ ] Liquid Glass UI
-- [ ] Animations
-- [ ] Motion
+- [x] Liquid Glass UI — dashboard redesigned to the Figma spec (glass cards, floating pill navbar, gradient-safe hero, ambient orbs)
+- [x] Animations — count-up numbers, animated progress bars, fade-in-up card entrances, pulse dots
+- [x] Motion — animated gradient orbs background
 - [ ] Responsive layouts
 - [ ] Loading states
 - [ ] Empty states
@@ -445,6 +445,9 @@ Transform MVP into a polished product.
 
 ### UX
 
+- [x] Pages open scrolled to top (ScrollToTop + manual scroll restoration)
+- [x] Insights chat page — full-page "Ask Nori" chat at `/insights`
+- [x] Navbar rework — Insights tab, search removed, sign-out in avatar dropdown
 - [ ] Accessibility
 - [ ] Keyboard navigation
 - [ ] Mobile responsiveness

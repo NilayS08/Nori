@@ -1,70 +1,37 @@
-# Current Phase: Phase 7 — AI
+# Current Phase: Phase 8 — UI Polish
 
-> Completed
+> In Progress — dashboard redesign landed
 
 ## Objective
 
-Integrate Gemini while keeping business logic deterministic.
+Transform MVP into a polished product, starting with a full dashboard redesign to the Figma spec.
 
 ## Tasks
 
-### AI Provider
+### Dashboard Redesign
 
-- [x] Gemini provider
-- [x] Provider abstraction
-- [x] Prompt templates
-
-### Features
-
-- [x] Purchase advice
-- [x] Weekly summary
-- [x] What-if simulator
-- [x] Goal explanations
-
-### Safety
-
-- [x] Error handling
-- [x] Rate limiting
-- [x] Prompt validation
+- [x] Design system — `#060608` palette, Inter/DM Sans/JetBrains Mono (self-hosted via `next/font`), glass utilities (`.glass`, `.glass-sm`, `.glass-nav`), gradient text, pulse dots, animated orbs
+- [x] Floating glass pill navbar — shared across dashboard + goals pages (avatar initials, search/notifications, sign out)
+- [x] Safe-to-spend hero — live balance badge, gradient INR amount, resets-in countdown, weekly figure
+- [x] Quick stats — avg daily spend vs budget, savings rate, days to nearest goal (all real data)
+- [x] Weekly spending chart — last 7 check-in weeks, current-week highlight, budget insight strip
+- [x] Savings goals card — progress rings + bars from real `goal_projections`, "View all" → /goals
+- [x] Budget health card — real score, expense/savings ratios, month label
+- [x] Financial confidence card — gradient ring + sub-score tags from real data
+- [x] Weekly check-in card — real check-in status, amount + notes, check-in dialog
+- [x] "Ask Nori" assistant panel — wired to existing AI features (purchase advice, what-if, weekly summary, goal review); suggestion chips + quick actions open the real dialogs; free-text matches intent
+- [x] Removed old dashboard cards (HeroCard, SafeToSpendCard, EmergencyFundCard, GoalCard, ConfidenceScoreCard) and old AI summary cards
+- [x] `redesign/` mockup excluded from lint + type-check (it's a standalone Vite reference)
 
 ## Verification
 
-- [x] AI responses generated — all four features verified end-to-end against Gemini
-- [x] Costs monitored — per-user rate limit (10/min default), weekly summary cached on the client
-- [x] Graceful failure — provider errors return 200 with deterministic numbers and `null` AI field
-- [x] Backend tests passing (59)
-- [x] Ruff passes
-- [x] Frontend lint + build pass
+- [x] Frontend lint passes
+- [x] Frontend build + type-check pass
+- [x] All routes return 200 in dev
+- [x] Served CSS contains new fonts, glass utilities, keyframes, and `#060608` background
 
-## Files to Create/Modify
+## Next Steps
 
-| File                                               | Action                                   |
-| -------------------------------------------------- | ---------------------------------------- |
-| `backend/app/ai/base.py`                           | Created — `AIProvider` protocol          |
-| `backend/app/ai/gemini.py`                         | Created — Gemini provider                |
-| `backend/app/ai/factory.py`                        | Created — provider selection             |
-| `backend/app/ai/prompts.py`                        | Created — templates + system instruction |
-| `backend/app/ai/rate_limiter.py`                   | Created — sliding-window limiter         |
-| `backend/app/schemas/ai.py`                        | Created — AI request/response schemas    |
-| `backend/app/services/ai.py`                       | Created — deterministic context + AI     |
-| `backend/app/api/v1/ai.py`                         | Created — `/ai` routes                   |
-| `backend/app/api/v1/router.py`                     | Modified — registered AI router          |
-| `backend/app/core/config.py`                       | Modified — `gemini_model`, rate limit    |
-| `backend/tests/test_services/test_ai.py`           | Created — AI unit tests (19)             |
-| `frontend/types/ai.ts`                             | Created — AI types                       |
-| `frontend/services/ai.ts`                          | Created — AI API calls                   |
-| `frontend/components/ai/WeeklyInsightCard.tsx`     | Created — dashboard weekly summary       |
-| `frontend/components/ai/PurchaseAdviceCard.tsx`    | Created — dashboard purchase advice      |
-| `frontend/components/ai/PurchaseAdviceDialog.tsx`  | Created — purchase advice flow           |
-| `frontend/components/ai/WhatIfCard.tsx`            | Created — dashboard what-if              |
-| `frontend/components/ai/WhatIfDialog.tsx`          | Created — scenario simulation flow       |
-| `frontend/components/ai/GoalInsightCard.tsx`       | Created — goal explanation card          |
-| `frontend/app/dashboard/page.tsx`                  | Modified — Insights section              |
-| `frontend/app/goals/[id]/page.tsx`                 | Modified — "Nori's take" card            |
-
-## Next Session — Phase 8: UI Polish
-
-1. Liquid Glass UI refinement
-2. Animations and motion
-3. Responsive layouts, loading/empty/error states
-4. Accessibility and keyboard navigation
+1. Responsive layouts + mobile pass
+2. Loading/empty/error state polish
+3. Accessibility and keyboard navigation
