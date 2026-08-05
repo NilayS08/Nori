@@ -12,6 +12,7 @@ Implemented:
 - Dashboard (Safe To Spend, Confidence Score, Goal progress)
 - Goal management (CRUD + progress)
 - Weekly check-ins
+- AI insights (purchase advice, weekly summary, what-if, goal explanations)
 
 ---
 
@@ -52,11 +53,13 @@ Implemented:
 
 ### AI
 
-- Purchase Advice
+- Purchase Advice — implemented
 
-- What If
+- What If — implemented
 
-- Weekly Summary
+- Weekly Summary — implemented
+
+- Goal Explanations — implemented
 
 ---
 

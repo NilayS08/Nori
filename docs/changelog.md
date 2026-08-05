@@ -66,9 +66,12 @@ Goals & Weekly Check-ins
 
 AI
 
-- Gemini
-- Purchase Advice
-- Weekly Summary
+- Gemini provider behind an `AIProvider` abstraction
+- Purchase advice — amount checked against budget + goals, friendly explanation
+- Weekly summary — current week stats + natural-language summary
+- What-if simulator — deterministic scenario projections + recommendation
+- Goal explanations — plain-language read on goal progress
+- Safety — graceful provider failure, per-user rate limiting, prompt validation
 
 ---
 

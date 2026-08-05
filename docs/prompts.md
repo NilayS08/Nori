@@ -60,6 +60,24 @@ Recommendation
 
 ---
 
+## Goal Explanations
+
+Input
+
+Goal progress JSON
+
+Overall financial context
+
+↓
+
+Gemini
+
+↓
+
+Plain-language explanation
+
+---
+
 ## Rules
 
 - Never invent numbers.
@@ -67,6 +85,7 @@ Recommendation
 - Explain tradeoffs.
 - Friendly tone.
 - No financial jargon.
+- No markdown or bullet symbols in answers.
 
 ---
 
@@ -74,3 +93,5 @@ Recommendation
 
 - AI prompts should access the provider through the AI Provider abstraction rather than directly instantiating Gemini clients.
 - This keeps provider switching possible without prompt changes.
+- Templates live in `backend/app/ai/prompts.py`; the shared system instruction enforces the rules above.
+- The LLM only ever receives numbers already computed by the Financial Engine. If the provider fails, endpoints still return the deterministic numbers with a `null` AI field.

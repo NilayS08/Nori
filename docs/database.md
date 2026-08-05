@@ -104,6 +104,8 @@ Check-ins belong to a user (cascade delete).
 
 ## AI Conversations
 
+Planned — not yet implemented. AI requests are currently stateless (no storage).
+
 Stores:
 
 - User Prompt

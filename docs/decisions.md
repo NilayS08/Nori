@@ -145,3 +145,51 @@ Reason
 - Mature ORM
 - Excellent Alembic integration
 - Easier model management
+
+---
+
+## ADR-012
+
+Decision
+
+AI endpoints always return deterministic numbers; the AI field is nullable.
+
+Reason
+
+AI failures should never break the feature. When the provider fails, the endpoint returns 200 with the computed numbers and a `null` AI field (graceful failure).
+
+---
+
+## ADR-013
+
+Decision
+
+Rate-limit AI endpoints per user with an in-memory sliding window.
+
+Reason
+
+Control API cost and prevent abuse. 10 requests per user per minute (configurable via `AI_RATE_LIMIT_PER_MINUTE`). Fine for a single-process dev deployment; a shared store (e.g. Redis) is the upgrade path for production.
+
+---
+
+## ADR-014
+
+Decision
+
+The LLM receives only numbers precomputed by the Financial Engine.
+
+Reason
+
+The LLM never calculates and never invents numbers. What-if scenarios are simulated deterministically by the engine before any prompt is built.
+
+---
+
+## ADR-015
+
+Decision
+
+Model referenced as `gemini-flash-latest`.
+
+Reason
+
+The stable alias points to the newest flash model automatically, avoiding breakage when a pinned model is retired. Overridable via `GEMINI_MODEL`.

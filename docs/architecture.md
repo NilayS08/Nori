@@ -113,8 +113,19 @@ Responsible only for:
 - Purchase advice
 - Weekly summaries
 - What-if conversations
+- Goal explanations
 
 Never responsible for financial calculations.
+
+Implemented in `app/ai/`:
+
+- `base.py` — `AIProvider` protocol
+- `gemini.py` — Gemini implementation (model from `GEMINI_MODEL`, default `gemini-flash-latest`)
+- `factory.py` — provider selection from `AI_PROVIDER`
+- `prompts.py` — prompt templates + shared system instruction
+- `rate_limiter.py` — per-user sliding-window limiter
+
+All numbers sent to the LLM come from the Financial Engine; failures degrade to deterministic-only responses.
 
 ---
 
@@ -250,6 +261,8 @@ SECRET_KEY=
 ALGORITHM=
 ACCESS_TOKEN_EXPIRE_MINUTES=
 GEMINI_API_KEY=
+GEMINI_MODEL=
+AI_RATE_LIMIT_PER_MINUTE=
 FRONTEND_URL=
 LOG_LEVEL=
 ```

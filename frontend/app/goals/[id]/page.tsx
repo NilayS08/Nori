@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { Navbar } from "@/components/dashboard/Navbar";
+import { GoalInsightCard } from "@/components/ai/GoalInsightCard";
 import { DeleteGoalDialog } from "@/components/goals/DeleteGoalDialog";
 import { GoalFormDialog } from "@/components/goals/GoalFormDialog";
 import { Badge } from "@/components/ui/badge";
@@ -200,6 +201,8 @@ export default function GoalDetailPage() {
                 </CardContent>
               </Card>
             </div>
+
+            <GoalInsightCard goalId={goal.id} goalTitle={goal.title} />
           </>
         )}
       </main>

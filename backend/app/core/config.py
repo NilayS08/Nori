@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     ai_provider: str = "gemini"
 
     gemini_api_key: str
+    gemini_model: str = "gemini-flash-latest"
+    ai_rate_limit_per_minute: int = 10
 
     frontend_url: str
 

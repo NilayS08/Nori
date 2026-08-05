@@ -1,3 +1,11 @@
+from app.schemas.ai import (
+    GoalExplanationResponse,
+    PurchaseAdviceRequest,
+    PurchaseAdviceResponse,
+    WeeklySummaryResponse,
+    WhatIfRequest,
+    WhatIfResponse,
+)
 from app.schemas.auth import (
     RefreshTokenRequest,
     TokenResponse,
@@ -41,6 +49,12 @@ __all__ = [
     "GoalResponse",
     "CheckInCreate",
     "CheckInResponse",
+    "PurchaseAdviceRequest",
+    "PurchaseAdviceResponse",
+    "WeeklySummaryResponse",
+    "WhatIfRequest",
+    "WhatIfResponse",
+    "GoalExplanationResponse",
     "DashboardResponse",
     "DashboardSummaryResponse",
     "SafeToSpendResponse",

@@ -105,9 +105,35 @@ Returns the most recent check-in, or null if none exist.
 
 POST /ai/purchase-advice
 
+Checks a purchase amount against the user's weekly budget and returns deterministic impact plus an AI explanation.
+
+Body:
+
+- amount (float, > 0)
+- description (string, optional)
+
+GET /ai/weekly-summary
+
+Returns deterministic stats for the current week (from check-ins) plus an AI natural-language summary.
+
 POST /ai/what-if
 
-POST /ai/chat
+Simulates a scenario deterministically and returns the projection plus an AI recommendation.
+
+Body:
+
+- scenario_type (enum: increase_income, increase_expenses, one_time_purchase, one_time_gain)
+- amount (float, > 0)
+- description (string, optional)
+
+GET /ai/goals/{goal_id}/explain
+
+Returns deterministic goal progress plus an AI explanation.
+
+All AI endpoints:
+
+- Return `null` for the AI text field on provider failure (graceful failure) — the deterministic numbers are always returned.
+- Are rate-limited per user (10 requests / minute, configurable via `AI_RATE_LIMIT_PER_MINUTE`).
 
 ---
 

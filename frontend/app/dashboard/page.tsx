@@ -14,6 +14,9 @@ import { HeroCard } from "@/components/dashboard/HeroCard";
 import { Navbar } from "@/components/dashboard/Navbar";
 import { SafeToSpendCard } from "@/components/dashboard/SafeToSpendCard";
 import { CheckInReminder } from "@/components/checkins/CheckInReminder";
+import { PurchaseAdviceCard } from "@/components/ai/PurchaseAdviceCard";
+import { WeeklyInsightCard } from "@/components/ai/WeeklyInsightCard";
+import { WhatIfCard } from "@/components/ai/WhatIfCard";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { getDashboard } from "@/services/dashboard";
@@ -85,6 +88,8 @@ export default function DashboardPage() {
             </div>
 
             <GoalsSection goals={data.goal_projections} />
+
+            <InsightsSection />
           </motion.div>
         )}
       </main>
@@ -142,6 +147,19 @@ function GoalsSection({
         {goals.map((goal, i) => (
           <GoalCard key={goal.title} goal={goal} delay={0.1 + i * 0.05} />
         ))}
+      </div>
+    </section>
+  );
+}
+
+function InsightsSection() {
+  return (
+    <section className="space-y-5">
+      <h2 className="text-[28px] font-semibold tracking-tight">Insights</h2>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <WeeklyInsightCard delay={0.1} />
+        <PurchaseAdviceCard delay={0.15} />
+        <WhatIfCard delay={0.2} />
       </div>
     </section>
   );
