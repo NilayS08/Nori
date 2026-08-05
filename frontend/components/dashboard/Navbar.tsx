@@ -47,7 +47,7 @@ export function Navbar({ name, onLogout }: NavbarProps) {
 
   return (
     <nav
-      className="glass-nav fixed left-1/2 top-5 z-[100] flex -translate-x-1/2 items-center gap-1 px-2 py-1.5"
+      className="glass-nav fixed left-1/2 top-5 z-[100] grid -translate-x-1/2 grid-cols-[1fr_auto_1fr] items-center px-2 py-1.5"
       style={{ width: "min(880px, calc(100vw - 40px))" }}
     >
       <Link
@@ -71,7 +71,7 @@ export function Navbar({ name, onLogout }: NavbarProps) {
         </span>
       </Link>
 
-      <div className="flex flex-1 gap-0.5">
+      <div className="flex gap-0.5">
         {links.map(({ href, label, icon: Icon }) => {
           const active = pathname.startsWith(href);
           return (
@@ -91,7 +91,7 @@ export function Navbar({ name, onLogout }: NavbarProps) {
         })}
       </div>
 
-      <div className="flex items-center gap-1">
+      <div className="flex items-center justify-end gap-1">
         <button
           aria-label="Notifications"
           className="relative flex size-8.5 items-center justify-center rounded-[100px] text-white/45 transition-colors hover:text-foreground"
@@ -126,7 +126,7 @@ export function Navbar({ name, onLogout }: NavbarProps) {
             {name && <DropdownMenuSeparator />}
             <DropdownMenuItem
               variant="destructive"
-              onSelect={() => onLogout?.()}
+              onClick={() => onLogout?.()}
               className="cursor-pointer"
             >
               <LogOut />

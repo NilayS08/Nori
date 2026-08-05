@@ -307,6 +307,8 @@ Dashboard is the primary landing page.
 
 ---
 
+
+
 # Phase 6 — Goals
 
 Status: Completed
@@ -436,10 +438,10 @@ Transform MVP into a polished product.
 - [x] Liquid Glass UI — dashboard redesigned to the Figma spec (glass cards, floating pill navbar, gradient-safe hero, ambient orbs)
 - [x] Animations — count-up numbers, animated progress bars, fade-in-up card entrances, pulse dots
 - [x] Motion — animated gradient orbs background
-- [ ] Responsive layouts
-- [ ] Loading states
-- [ ] Empty states
-- [ ] Error states
+- [x] Responsive layouts
+- [x] Loading states
+- [x] Empty states
+- [x] Error states
 
 
 
