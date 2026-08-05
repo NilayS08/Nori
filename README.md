@@ -1,4 +1,4 @@
-# Nori (Working Name)
+# Nori
 
 > **Spend with confidence, not guilt.**
 
