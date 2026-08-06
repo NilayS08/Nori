@@ -108,7 +108,7 @@ function LandingNav({ onStart }: { onStart: () => void }) {
 }
 
 // ── Section 1: Hero ───────────────────────────────────────────────────────────
-function HeroSection({ onStart, onDashboard }: { onStart: () => void; onDashboard: () => void }) {
+function HeroSection({ onStart }: { onStart: () => void }) {
   const [loaded, setLoaded] = useState(false)
   useEffect(() => { setTimeout(() => setLoaded(true), 80) }, [])
 
@@ -134,7 +134,6 @@ function HeroSection({ onStart, onDashboard }: { onStart: () => void; onDashboar
       {/* Buttons */}
       <div style={{ opacity: loaded ? 1 : 0, transform: loaded ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.7s ease 0.44s', display: 'flex', gap: 12, marginBottom: 80 }}>
         <button onClick={onStart} style={{ padding: '14px 32px', borderRadius: 100, fontSize: 15, fontWeight: 600, border: 'none', background: 'linear-gradient(135deg, #6b7cff 0%, #a78bfa 100%)', color: '#fff', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 0 32px rgba(107,124,255,0.45)', transition: 'all 0.2s ease' }} onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 48px rgba(107,124,255,0.7)')} onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 32px rgba(107,124,255,0.45)')}>Start Free</button>
-        <button onClick={onDashboard} style={{ padding: '14px 32px', borderRadius: 100, fontSize: 15, fontWeight: 500, border: '1px solid rgba(255,255,255,0.14)', background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.7)', cursor: 'pointer', fontFamily: 'inherit', backdropFilter: 'blur(12px)', transition: 'all 0.2s ease' }} onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.28)'; e.currentTarget.style.color = '#f0f0f5' }} onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.14)'; e.currentTarget.style.color = 'rgba(255,255,255,0.7)' }}>View Dashboard ↗</button>
       </div>
 
       {/* Floating dashboard mockup */}
@@ -159,13 +158,13 @@ function HeroSection({ onStart, onDashboard }: { onStart: () => void; onDashboar
             {/* Hero number */}
             <div style={{ textAlign: 'center', marginBottom: 24 }}>
               <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6 }}>Safe to Spend Today</div>
-              <div style={{ fontSize: 52, fontWeight: 700, fontFamily: "'Inter', sans-serif", letterSpacing: '-0.04em', background: 'linear-gradient(135deg, #34d399 0%, #6ee7b7 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1 }}>$347.50</div>
+              <div style={{ fontSize: 52, fontWeight: 700, fontFamily: "'Inter', sans-serif", letterSpacing: '-0.04em',             background: 'linear-gradient(135deg, #34d399 0%, #6ee7b7 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1 }}>₹347.50</div>
               <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.28)', marginTop: 6 }}>Resets in 11h 24m · Next paycheck in 6 days</div>
             </div>
 
             {/* Stat row */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 16 }}>
-              {[{ label: 'Avg daily spend', v: '$58.50', delta: '-12%', up: false }, { label: 'Savings rate', v: '23.4%', delta: '+2.1%', up: true }, { label: 'Days to goal', v: '47', delta: '-3 days', up: false }].map(s => (
+              {[{ label: 'Avg daily spend', v: '₹58.50', delta: '-12%', up: false }, { label: 'Savings rate', v: '23.4%', delta: '+2.1%', up: true }, { label: 'Days to goal', v: '47', delta: '-3 days', up: false }].map(s => (
                 <div key={s.label} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '12px 14px' }}>
                   <div style={{ fontSize: 9.5, color: 'rgba(255,255,255,0.3)', marginBottom: 5 }}>{s.label}</div>
                   <div style={{ fontSize: 17, fontWeight: 700, color: '#f0f0f5', fontFamily: "'Inter', sans-serif", letterSpacing: '-0.02em' }}>{s.v}</div>
@@ -352,13 +351,13 @@ function ShowcaseSection({ onDashboard }: { onDashboard: () => void }) {
               {/* Hero number */}
               <div style={{ textAlign: 'center', marginBottom: 28 }}>
                 <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.28)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>Safe to Spend Today</div>
-                <div style={{ fontSize: 64, fontWeight: 700, fontFamily: "'Inter', sans-serif", letterSpacing: '-0.04em', background: 'linear-gradient(135deg, #34d399, #6ee7b7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1 }}>$347.50</div>
+                <div style={{ fontSize: 64, fontWeight: 700, fontFamily: "'Inter', sans-serif", letterSpacing: '-0.04em',             background: 'linear-gradient(135deg, #34d399, #6ee7b7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1 }}>₹347.50</div>
                 <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', marginTop: 8 }}>Resets in 11h 24m · Next paycheck in 6 days</div>
               </div>
 
               {/* Stat row */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 20 }}>
-                {[{ label: 'Avg daily spend', v: '$58.50', c: '#f59e0b' }, { label: 'Savings rate', v: '23.4%', c: '#34d399' }, { label: 'Days to goal', v: '47', c: '#34d399' }].map(s => (
+                {[{ label: 'Avg daily spend', v: '₹58.50', c: '#f59e0b' }, { label: 'Savings rate', v: '23.4%', c: '#34d399' }, { label: 'Days to goal', v: '47', c: '#34d399' }].map(s => (
                   <div key={s.label} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '14px 16px' }}>
                     <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.28)', marginBottom: 6 }}>{s.label}</div>
                     <div style={{ fontSize: 20, fontWeight: 700, color: '#f0f0f5', fontFamily: "'Inter', sans-serif", letterSpacing: '-0.02em' }}>{s.v}</div>
@@ -435,7 +434,7 @@ function ShowcaseSection({ onDashboard }: { onDashboard: () => void }) {
                   </div>
                   <div style={{ padding: '8px 12px', borderRadius: 10, background: 'rgba(107,124,255,0.1)', border: '1px solid rgba(107,124,255,0.15)', fontSize: 10.5, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5 }}>
                     <span style={{ color: '#818cf8', fontWeight: 600 }}>Weekly Insight</span><br />
-                    Maintain this pace and save $127 extra this month.
+                    Maintain this pace and save ₹127 extra this month.
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                     {['Am I overspending?', 'Can I afford AirPods?', 'Review my goals'].map(q => (
@@ -496,8 +495,8 @@ function HowItWorksSection() {
 
 // ── Section 6: Meet Nori AI ───────────────────────────────────────────────────
 const demoConversations = [
-  { q: 'Can I afford AirPods?', a: "Yes — you have $347.50 safe to spend today and AirPods Pro are $249. Buying them leaves you with $98.50 for the rest of the day, which is above your average. Go for it." },
-  { q: 'Can I travel next month?', a: "Based on your savings goals, you can comfortably afford a $1,200 trip in September without touching your emergency fund. I'd suggest booking before the 15th." },
+  { q: 'Can I afford AirPods?', a: "Yes — you have ₹347.50 safe to spend today and AirPods Pro are ₹249. Buying them leaves you with ₹98.50 for the rest of the day, which is above your average. Go for it." },
+  { q: 'Can I travel next month?', a: "Based on your savings goals, you can comfortably afford a ₹1,200 trip in September without touching your emergency fund. I'd suggest booking before the 15th." },
   { q: 'Should I buy a MacBook?', a: "You're 44% toward your MacBook goal. At your current pace, you'll reach it in 67 days. I wouldn't buy it outright today — let me help you get there faster." },
 ]
 
@@ -633,7 +632,7 @@ function WhyNoriSection() {
 }
 
 // ── Final CTA ─────────────────────────────────────────────────────────────────
-function CTASection({ onStart, onDashboard }: { onStart: () => void; onDashboard: () => void }) {
+function CTASection({ onStart }: { onStart: () => void }) {
   return (
     <section style={{ padding: '0 32px 140px', position: 'relative', zIndex: 1, maxWidth: 900, margin: '0 auto', textAlign: 'center' }}>
       <FadeIn>
@@ -659,7 +658,6 @@ function CTASection({ onStart, onDashboard }: { onStart: () => void; onDashboard
 
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginBottom: 0 }}>
             <button onClick={onStart} style={{ padding: '15px 38px', borderRadius: 100, fontSize: 16, fontWeight: 600, border: 'none', background: 'linear-gradient(135deg, #6b7cff 0%, #a78bfa 100%)', color: '#fff', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '0 0 40px rgba(107,124,255,0.5)', transition: 'all 0.2s ease' }} onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 60px rgba(107,124,255,0.7)')} onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 40px rgba(107,124,255,0.5)')}>Start Free</button>
-            <button onClick={onDashboard} style={{ padding: '15px 38px', borderRadius: 100, fontSize: 16, fontWeight: 500, border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.7)', cursor: 'pointer', fontFamily: 'inherit', backdropFilter: 'blur(12px)', transition: 'all 0.2s ease' }} onMouseEnter={e => { e.currentTarget.style.color = '#f0f0f5'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.28)' }} onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}>View Dashboard</button>
           </div>
         </div>
       </FadeIn>
@@ -697,14 +695,14 @@ export default function LandingPage() {
     <div style={{ minHeight: '100vh', background: '#060608', position: 'relative', overflowX: 'hidden' }}>
       <LandingOrbs />
       <LandingNav onStart={onStart} />
-      <HeroSection onStart={onStart} onDashboard={onDashboard} />
+      <HeroSection onStart={onStart} />
       <ProblemSection />
       <SolutionSection />
       <ShowcaseSection onDashboard={onDashboard} />
       <HowItWorksSection />
       <MeetNoriSection />
       <WhyNoriSection />
-      <CTASection onStart={onStart} onDashboard={onDashboard} />
+      <CTASection onStart={onStart} />
       <Footer />
     </div>
   )
