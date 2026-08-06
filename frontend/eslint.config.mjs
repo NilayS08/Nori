@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Standalone design reference mockup (Vite), not shipped code.
     "redesign/**",
+    "design/**",
   ]),
 ]);
 
