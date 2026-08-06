@@ -423,7 +423,7 @@ AI explains financial decisions without replacing deterministic calculations.
 
 # Phase 8 — UI Polish
 
-Status: In Progress
+Status: Completed
 
 ## Objective
 
@@ -450,16 +450,16 @@ Transform MVP into a polished product.
 - [x] Pages open scrolled to top (ScrollToTop + manual scroll restoration)
 - [x] Insights chat page — full-page "Ask Nori" chat at `/insights`
 - [x] Navbar rework — Insights tab, search removed, sign-out in avatar dropdown
-- [ ] Accessibility
-- [ ] Keyboard navigation
-- [ ] Mobile responsiveness
+- [x] Accessibility
+- [x] Keyboard navigation
+- [x] Mobile responsiveness
 
 
 
 ## Verification
 
-- [ ] Lighthouse audit
-- [ ] Responsive testing
+- [x] Lighthouse audit
+- [x] Responsive testing
 
 
 
